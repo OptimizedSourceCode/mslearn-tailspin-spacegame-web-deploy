@@ -52,7 +52,14 @@ stages:
           command: 'build'
           arguments: '--no-restore --configuration $(buildConfiguration)'
           projects: '**/*.csproj'
-  
+
+      - task: SonarCloudPrepare@1
+        inputs:
+          SonarCloud: 'DevopsSonar'
+          organization: 'mysonarazure'
+          scannerMode: 'MSBuild'
+          projectKey: 'mysonarazure'
+          projectName: 'DevOps Sonar'
       - task: DotNetCoreCLI@2
         displayName: 'Publish the project - $(buildConfiguration)'
         inputs:
