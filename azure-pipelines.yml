@@ -58,8 +58,8 @@ stages:
           SonarCloud: 'DevopsSonar'
           organization: 'mysonarazure'
           scannerMode: 'MSBuild'
-          projectKey: 'mysonarazure'
-          projectName: 'mySonarAzure'
+          projectKey: 'sarinajacob_Space-Game---web---Deployment-patterns'
+          projectName: 'Space Game - web - Deployment patterns'
         
       - task: SonarCloudAnalyze@1
         inputs:
