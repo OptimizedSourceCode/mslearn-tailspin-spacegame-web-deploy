@@ -60,6 +60,10 @@ stages:
           scannerMode: 'MSBuild'
           projectKey: 'mysonarazure'
           projectName: 'DevOps Sonar'
+        
+      - task: SonarCloudAnalyze@1
+        inputs:
+          jdkversion: 'JAVA_HOME_17_X64'
       - task: DotNetCoreCLI@2
         displayName: 'Publish the project - $(buildConfiguration)'
         inputs:
