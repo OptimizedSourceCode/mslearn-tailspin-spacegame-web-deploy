@@ -46,13 +46,6 @@ stages:
           command: 'restore'
           projects: '**/*.csproj'
   
-      - task: DotNetCoreCLI@2
-        displayName: 'Build the project - $(buildConfiguration)'
-        inputs:
-          command: 'build'
-          arguments: '--no-restore --configuration $(buildConfiguration)'
-          projects: '**/*.csproj'
-
       - task: SonarCloudPrepare@1
         inputs:
           SonarCloud: 'DevopsSonar'
@@ -60,7 +53,14 @@ stages:
           scannerMode: 'MSBuild'
           projectKey: 'sarinajacob_Space-Game---web---Deployment-patterns'
           projectName: 'Space Game - web - Deployment patterns'
-        
+
+      - task: DotNetCoreCLI@2
+        displayName: 'Build the project - $(buildConfiguration)'
+        inputs:
+          command: 'build'
+          arguments: '--no-restore --configuration $(buildConfiguration)'
+          projects: '**/*.csproj'
+
       - task: SonarCloudAnalyze@1
         inputs:
           jdkversion: 'JAVA_HOME'
